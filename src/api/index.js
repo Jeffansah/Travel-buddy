@@ -1,3 +1,4 @@
+import { Data } from "@react-google-maps/api";
 import axios from "axios";
   
 
@@ -20,4 +21,16 @@ export const getPlacesData = async(type, sw, ne) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const getWeatherData = async (lat, lng) => {
+  try{
+    const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=dd6e8f4cd9867a85a6c1be10fa7082b7`);
+
+    return data;
+  } 
+  
+  catch (error){
+    console.log(error);
+  }
 }
